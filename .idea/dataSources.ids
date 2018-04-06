@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - eshoper_db@localhost" uuid="2b0692cd-6ab4-4940-b0f1-6d2eaf0c6b2e">
+    <database-info product="MySQL" version="5.5.5-10.0.31-MariaDB-0ubuntu0.16.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="eshoper_db"/>
+    <table name="categoryMaster" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="categoryName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="credentials" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tokenId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="productMaster" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="productName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="purchaseMaster" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="productId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="taxMaster" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="taxName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="user" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="firstName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phoneNumber" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="userToken" schema="" catalog="eshoper_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="token" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="updatedOn" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <procedure name="CreateUser" schema="" catalog="eshoper_db" type="1">
+      <prototype>
+        <parameter name="first_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="last_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="phone_number" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12" type="1" index="3"/>
+        <parameter name="email_address" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="4"/>
+        <parameter name="address_ad" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" type="1" index="5"/>
+        <parameter name="user_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="pass_word" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" type="1" index="7"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetPurchase" schema="" catalog="eshoper_db" type="1">
+      <prototype>
+        <parameter name="user_token" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+      </prototype>
+    </procedure>
+    <procedure name="GetUsernamePassword" schema="" catalog="eshoper_db" type="1">
+      <prototype>
+        <parameter name="user_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="pass_word" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+      </prototype>
+    </procedure>
+    <procedure name="RecordPurchase" schema="" catalog="eshoper_db" type="1">
+      <prototype>
+        <parameter name="product" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="amount" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="user_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" type="1" index="3"/>
+      </prototype>
+    </procedure>
+  </data-source>
+</component>
